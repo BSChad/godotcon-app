@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctpewkejvy7r0"]
+
+[ext_resource type="Script" uid="uid://csxlwf7gx15ii" path="res://Main/tab_container_with_icons.gd" id="1_eunhr"]
+[ext_resource type="Texture2D" uid="uid://cla42ed6tbiu6" path="res://noun-home-323079.png" id="2_ib3t1"]
+[ext_resource type="PackedScene" uid="uid://d3qn382d87cma" path="res://Home/home.tscn" id="2_k3v36"]
+[ext_resource type="Texture2D" uid="uid://ro7wai51dmq3" path="res://noun-schedule-2548891.png" id="3_f6fdm"]
+[ext_resource type="PackedScene" uid="uid://dhdktldbliksh" path="res://Talks/schedule.tscn" id="3_liyct"]
+[ext_resource type="PackedScene" uid="uid://c82wri4xcr5cj" path="res://Contact/contact.tscn" id="4_ib3t1"]
+[ext_resource type="Texture2D" uid="uid://dqvl3n2mq5rql" path="res://noun-contact-3255199.png" id="4_rj11h"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+tabs_position = 1
+script = ExtResource("1_eunhr")
+tab_icons = Array[Texture]([ExtResource("2_ib3t1"), ExtResource("3_f6fdm"), ExtResource("4_rj11h")])
+
+[node name="Home" parent="TabContainer" instance=ExtResource("2_k3v36")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Schedule" parent="TabContainer" instance=ExtResource("3_liyct")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Contact" parent="TabContainer" instance=ExtResource("4_ib3t1")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

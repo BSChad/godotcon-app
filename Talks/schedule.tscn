@@ -1,15 +1,38 @@
-[gd_scene format=3 uid="uid://dhdktldbliksh"]
+[gd_scene load_steps=3 format=3 uid="uid://dhdktldbliksh"]
 
-[node name="Schedule" type="Control"]
+[ext_resource type="Script" uid="uid://bh6xpn25jvc7q" path="res://Talks/Pretalx/pretalx_api_driver.gd" id="1_0nhri"]
+[ext_resource type="Script" uid="uid://rhhb17ym8b7d" path="res://Talks/schedule_controller.gd" id="1_43tv6"]
+
+[node name="Schedule" type="Control" node_paths=PackedStringArray("api_driver")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_43tv6")
+api_driver = NodePath("PretalxAPIDriver")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
 text = "Schedule"
+
+[node name="PretalxAPIDriver" type="Node" parent="." node_paths=PackedStringArray("httpclient")]
+script = ExtResource("1_0nhri")
+httpclient = NodePath("HTTPRequest")
+metadata/_custom_type_script = "uid://bh6xpn25jvc7q"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="PretalxAPIDriver"]

@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://c82wri4xcr5cj"]
+
+[ext_resource type="Script" uid="uid://bwmutxslvhfpn" path="res://Contact/contact_controller.gd" id="1_2cf0m"]
+
+[node name="Contact" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2cf0m")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FirstNameLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "First Name"
+
+[node name="FirstNameTextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+placeholder_text = "Godot"
+scroll_fit_content_height = true
+
+[node name="LastNameLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Last Name"
+
+[node name="LastNameTextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+placeholder_text = "Godot"
+scroll_fit_content_height = true
+
+[node name="EmailLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Email"
+
+[node name="EmailTextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+placeholder_text = "mrgodot@godotengine.org"
+scroll_fit_content_height = true
+
+[node name="PhoneLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Phone"
+
+[node name="PhoneTextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+placeholder_text = "+1 555 555 5555"
+scroll_fit_content_height = true
+
+[node name="Spacer" type="Control" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="CreateQRButton" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create QR"
+
+[node name="NFCButton" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NFC Share"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/CreateQRButton" to="." method="_on_create_qr_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/NFCButton" to="." method="_on_nfc_button_pressed"]
