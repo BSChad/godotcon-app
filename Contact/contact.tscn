@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c82wri4xcr5cj"]
+[gd_scene load_steps=3 format=3 uid="uid://c82wri4xcr5cj"]
 
 [ext_resource type="Script" uid="uid://bwmutxslvhfpn" path="res://Contact/contact_controller.gd" id="1_2cf0m"]
+[ext_resource type="Theme" uid="uid://broq88mouk810" path="res://Contact/error_theme.tres" id="2_mdu70"]
 
 [node name="Contact" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2cf0m")
+error_theme = ExtResource("2_mdu70")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -53,11 +55,21 @@ layout_mode = 2
 placeholder_text = "mrgodot@godotengine.org"
 scroll_fit_content_height = true
 
-[node name="PhoneLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="HomePhoneLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Phone"
+text = "Home Phone"
 
-[node name="PhoneTextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer"]
+[node name="HomePhoneTextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+placeholder_text = "+1 555 555 5555"
+scroll_fit_content_height = true
+
+[node name="CellPhoneLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cell Phone"
+
+[node name="CellPhoneTextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 placeholder_text = "+1 555 555 5555"
@@ -83,5 +95,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "NFC Share"
 
+[connection signal="text_changed" from="ScrollContainer/VBoxContainer/FirstNameTextEdit" to="." method="_on_name_text_edit_text_changed"]
+[connection signal="text_changed" from="ScrollContainer/VBoxContainer/LastNameTextEdit" to="." method="_on_name_text_edit_text_changed"]
+[connection signal="text_changed" from="ScrollContainer/VBoxContainer/EmailTextEdit" to="." method="_on_email_text_edit_text_changed"]
+[connection signal="text_changed" from="ScrollContainer/VBoxContainer/HomePhoneTextEdit" to="." method="_on_phone_text_edit_text_changed" binds= [false]]
+[connection signal="text_changed" from="ScrollContainer/VBoxContainer/CellPhoneTextEdit" to="." method="_on_phone_text_edit_text_changed" binds= [true]]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/CreateQRButton" to="." method="_on_create_qr_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/NFCButton" to="." method="_on_nfc_button_pressed"]

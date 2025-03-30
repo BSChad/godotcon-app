@@ -24,6 +24,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=5
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/vcard_generator/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="mobile"
