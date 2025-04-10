@@ -21,7 +21,7 @@ func _ready() -> void:
 func _on_create_qr_button_pressed() -> void:
 	vcard.properties[VCardProps.VC_EMAIL] = $ScrollContainer/VBoxContainer/EmailTextEdit.text
 	var card_string = vcard.as_string()
-	var file = FileAccess.open("/storage/emulated/0/Documents/contact.vcf", FileAccess.WRITE)
+	var file = FileAccess.open("user://contact.vcf", FileAccess.WRITE)
 	file.store_string(card_string)
 	print(file.get_path_absolute())
 
