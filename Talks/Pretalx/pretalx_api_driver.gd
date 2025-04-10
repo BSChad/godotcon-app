@@ -7,7 +7,7 @@ extends Node
 
 const pretalx_base_uri := "https://talks.godotengine.org"
 # TODO: Make this talks when schedule released
-const talks_uri := "/api/events/godotcon-us-2025/submissions"
+const talks_uri := "/api/events/godotcon-us-2025/talks"
 
 
 func get_talks(handler: Callable):
